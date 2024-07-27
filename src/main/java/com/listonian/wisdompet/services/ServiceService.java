@@ -17,7 +17,7 @@ public class ServiceService {
         this.serviceRepository = serviceRepository;
     }
 
-    public List<Service> getAllServicess(){
+    public List<Service> getAllServices(){
         Iterable<ServiceEntity> serviceEntities = this.serviceRepository.findAll();
         List<Service> services = new ArrayList<>();
         serviceEntities.forEach(serviceEntity->{

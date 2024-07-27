@@ -26,6 +26,6 @@ public class CustomerEntity {
     @Column(name = "PHONE")
     private String phone;
 
-    @Column(name = "ADDRES")
+    @Column(name = "ADDRESS")
     private String address;
 }
