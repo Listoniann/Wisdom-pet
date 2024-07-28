@@ -1,3 +1,5 @@
+import {useLayoutEffect, useState} from "react";
+
 const customers = [ {
     "customerId": 1,
     "firstName": "Cally",
@@ -16,6 +18,18 @@ const customers = [ {
     }]
 
 const Customers = () => {
+    const [customers, setCustomers] = useState([])
+
+    useLayoutEffect( ()=> {
+        const getCustomers = async () => {
+            const res = await fetch('/api/customers');
+            const customers = await  res.json();
+            setCustomers(customers);
+        }
+        getCustomers().catch(e => {
+            console.log('error fetching customers: ' + e);
+        })
+    })
     return (
         <table>
             <thread>
@@ -38,7 +52,7 @@ const Customers = () => {
                 } = customer;
                 return (
                 <tr key={customerId}>
-                    <td>{custtomerId}</td>
+                    <td>{customerId}</td>
                     <td>{firstName}</td>
                     <td>{lastName}</td>
                     <td>{emailAddress}</td>
